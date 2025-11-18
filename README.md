@@ -1,3 +1,13 @@
+<p align="center">
+  <img src="https://img.shields.io/badge/Terraform-v1.x-623CE4?logo=terraform&logoColor=white" />
+  <img src="https://img.shields.io/badge/Google Cloud-Infra-4285F4?logo=googlecloud&logoColor=white" />
+  <img src="https://img.shields.io/badge/GKE-Kubernetes-326CE5?logo=kubernetes&logoColor=white" />
+  <img src="https://img.shields.io/badge/Ansible-Automation-EE0000?logo=ansible&logoColor=white" />
+  <img src="https://img.shields.io/badge/WSL-Ubuntu-000000?logo=ubuntu&logoColor=white" />
+</p>
+
+---
+
 # GKE Infrastructure Lab  
 Provisioning a Google Kubernetes Engine cluster with **Terraform** and deploying a sample application using **Ansible** on WSL.
 
@@ -174,5 +184,6 @@ A solid foundation for SRE / DevOps / Cloud Engineer roles.
 ---
 
 # 📄 License
+
 
 This project is intended for educational and portfolio use.
