@@ -1,0 +1,63 @@
+
+- name: Deploy sample app to GKE
+  hosts: local
+  gather_facts: false
+
+  vars:
+    kubeconfig_path: "/home/leehmdev/.kube/config"
+    app_namespace: demo-app
+
+  tasks:
+    - name: Create namespace
+      kubernetes.core.k8s:
+        kubeconfig: "{{ kubeconfig_path }}"
+        state: present
+        definition:
+          apiVersion: v1
+          kind: Namespace
+          metadata:
+            name: "{{ app_namespace }}"
+
+    - name: Deploy sample nginx app
+      kubernetes.core.k8s:
+        kubeconfig: "{{ kubeconfig_path }}"
+        state: present
+        definition:
+          apiVersion: apps/v1
+          kind: Deployment
+          metadata:
+            name: nginx-deployment
+            namespace: "{{ app_namespace }}"
+          spec:
+            replicas: 2
+            selector:
+              matchLabels:
+                app: nginx
+            template:
+              metadata:
+                labels:
+                  app: nginx
+              spec:
+                containers:
+                  - name: nginx
+                    image: nginx:1.25
+                    ports:
+                      - containerPort: 80
+
+    - name: Expose nginx service
+      kubernetes.core.k8s:
+        kubeconfig: "{{ kubeconfig_path }}"
+        state: present
+        definition:
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: nginx-service
+            namespace: "{{ app_namespace }}"
+          spec:
+            type: LoadBalancer
+            selector:
+              app: nginx
+            ports:
+              - port: 80
+                targetPort: 80
