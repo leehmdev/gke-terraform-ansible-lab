@@ -149,7 +149,7 @@ This removes all GCP resources created by the lab.
 
 ---
 
-## 📘 What I Learned
+## 📘 What you can Learned
 
 - Designing and provisioning infrastructure using Terraform  
 - Managing IAM, VPC networking, and GKE resources  
@@ -175,5 +175,6 @@ A solid foundation for SRE / DevOps / Cloud Engineer roles.
 ---
 
 # 📄 License
+
 
 This project is intended for educational and portfolio use.
